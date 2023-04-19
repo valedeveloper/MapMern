@@ -6,7 +6,53 @@
   height: 40vmin;
   pointer-events: none;
 }
+ .mapboxgl-canvas{
+  width: 100vw;
+  height: max-content;
+} 
 
+
+.containerPopup{ 
+  background-color: aliceblue;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-radius: 10px;
+  margin-left: 30px;
+}
+.containerPopup span{
+  border-bottom: solid 1px #fd0a54;
+  width: 100%;
+  color:#fd0a54 ;
+  font-weight: 700;
+  text-align: left;
+  padding-bottom: 5px;
+  cursor: pointer;
+}
+.containerPopup p{
+  font-weight: 600;
+}
+.containerStar{ 
+  padding: 10px;
+}
+.mapboxgl-popup-close-button {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  text-shadow: none;
+  opacity: 1;
+  background-color: transparent;
+  border: none;
+}
+
+.mapboxgl-popup-close-button:hover {
+  color: #fd0a54;
+  cursor: pointer;
+}
+.star{
+  color: gold
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
