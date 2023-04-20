@@ -82,3 +82,29 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+.formPost{ 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  background-color: beige;
+  padding: 20px;
+  border-radius: 15px;
+}
+
+.formPost input,textarea,select{ 
+  border: none;
+  padding: 5px 10px;
+}
+.formPost label{ 
+  font-weight: 600;
+}
+.formPost button{ 
+  background-color: tomato;
+  padding: 5px 10px;
+  color: white;
+  border: none;
+}
