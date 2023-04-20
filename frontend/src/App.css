@@ -53,6 +53,35 @@
 .star{
   color: gold
 }
+
+.buttons{ 
+  display: flex;
+  gap: 15px;
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+
+.buttons button{ 
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+}
+.exit{ 
+  background-color: tomato;
+
+}
+.registerBtn{ 
+  background-color: rgb(90, 223, 90);
+}
+ .loginBtn{
+  background-color: plum;
+}
+
+
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

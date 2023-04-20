@@ -1,10 +1,48 @@
-.register{
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    margin: auto;
-    background-color: black;
-    width: 500px;
-    height: 500px;
+.register {
+  position: absolute;
+  padding: 15px;
+  left: 0;
+  right: 0;
+  top: 50px;
+  margin: auto;
+  background-color: white;
+  width: 400px;
+  height: 300px;
+  border-radius: 10px;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+.register form{ 
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 20px;
+}
+.containerLogo{ 
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.register input{ 
+    border:none;
+    border-bottom: 1px solid gray;
+    padding:  5px;
+}
+.register button{ 
+    border: none;
+    background-color: plum;
+    color: white;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.successSpan{ 
+    color: green;
+}
+.errorSpan{ 
+    color: red;
 }

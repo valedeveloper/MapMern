@@ -25,9 +25,10 @@ function App() {
   const [newLocation, setNewLocation] = useState(null);
   const [isRegister, setIsRegister] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
+  const [userCurrent, setUserCurrent] = useState(window.localStorage.getItem("user") || null);
 
-  const username = "Valeria";
-  // const {location} =useData({keyword:"pin"});
+  const username = "Valeria J";
+  // const {location,postPin} =useData({keyword:"pin"});
 
   const getPins = async () => {
     const res = await fetch(EDN_POINTPINS);
@@ -40,7 +41,7 @@ function App() {
   const onMoveMap = (e) => {
     setViewState(e.viewState);
   };
-  
+
   const handledNewPin = async (e) => {
     e.preventDefault();
     const entries = new window.FormData(e.target);
@@ -49,7 +50,7 @@ function App() {
     const rating = entries.get("rating");
 
     const newEntries = {
-      username: username,
+      username: userCurrent || username ,
       title: title,
       desc: desc,
       rating: rating,
@@ -68,10 +69,13 @@ function App() {
       });
       const data = await res.json();
       console.log(data);
+      setNewLocation(null);
       setLocation([...location, data]);
     } catch {
       console.log("Error en enviar a la api");
     }
+
+    // const newLocation=await postPin({ keyword:"pin",method:"POST",entries:newEntries})
   };
 
   const onClosePopupLocation = () => {
@@ -95,7 +99,21 @@ function App() {
     });
   };
 
- 
+  const closeRegister=()=>{ 
+    setIsRegister(false)
+  }
+  const closeLogin=()=>{ 
+    setIsLogin(false)
+  }
+  const setUserBtn=(user)=>{ 
+    setUserCurrent(user)
+  }
+
+  const removeUserBtn=()=>{
+    setUserCurrent(null)
+    window.localStorage.removeItem("user")
+  }
+
   return (
     <div
       className="App"
@@ -175,26 +193,23 @@ function App() {
         )}
       </Map>
 
-      <div
-        className="buttons"
-        style={{
-          display: "flex",
-          gap: "15px",
-          position: "absolute",
-          right: "30px",
-          top: "20px",
-        }}
-      >
-        <button onClick={()=>setIsRegister(true)}>Register</button>
-        <button onClick={()=>setIsLogin(true)}>Login</button>
+      <div className="buttons">
+        {userCurrent ? (
+          <button className="exit" onClick={removeUserBtn}>Salir</button>
+        ) : (
+          <>
+            <button className="registerBtn" onClick={() => setIsRegister(true)}>
+              Registrarse
+            </button>
+            <button className="loginBtn" onClick={() => setIsLogin(true)}>
+              Entrar
+            </button>
+          </>
+        )}
       </div>
 
-      {
-        isRegister && <Register/>
-      }
-      {
-        isLogin && <Login/>
-      }
+      {isRegister && <Register closeRegister={closeRegister}/>}
+      {isLogin && <Login closeLogin={closeLogin} setUserBtn={setUserBtn} />}
     </div>
   );
 }
